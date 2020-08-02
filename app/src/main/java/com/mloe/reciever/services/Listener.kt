@@ -45,7 +45,7 @@ class Listener : Service() {
                 val socket: Socket = serverSocket.accept()
                 handleConnection(socket)
             }catch(e: SocketException){
-                Log.i(TAG, "Socket is closed")
+                //Socket is closed, don't do anything
             }
         }
     }

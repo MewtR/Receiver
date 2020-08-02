@@ -13,14 +13,13 @@ import androidx.core.app.NotificationManagerCompat
 import com.mloe.reciever.R
 import kotlinx.coroutines.*
 
-private const val TAG = "MyService"
+private const val TAG = "Notifyier"
 private const val CHANNEL_ID = "channel01"
 
 class Notifyier : Service() {
 
     private val notificationScope = CoroutineScope(Dispatchers.Main)
     override fun onBind(intent: Intent): IBinder? {
-        TODO("Return the communication channel to the service.")
         return null;
     }
 
@@ -79,7 +78,6 @@ class Notifyier : Service() {
     override fun onDestroy() {
         super.onDestroy()
         notificationScope.cancel()
-        Log.i(TAG, "Destroying service")
     }
 }
 
