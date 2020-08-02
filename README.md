@@ -1,6 +1,6 @@
 # Receiver
 
-A silly android app that allows you to send notifications to your phone. Definetly needs more testing.
+A silly android app that allows you to send notifications to your phone. Definitely needs more testing.
 
 ### Usage
 
