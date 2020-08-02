@@ -32,9 +32,6 @@ class Notifyier : Service() {
             val title: String = intent?.getStringExtra("title") ?: "Hello"
             val text: String = intent?.getStringExtra("text") ?: "It's me again"
             val priority: Int = intent?.getIntExtra("priority", 0) ?: 0
-            Log.i(TAG, "title: $title")
-            Log.i(TAG, "text: $text")
-            Log.i(TAG, "priority $priority")
             createNotificationChannel()
             showNotification(title, text, priority)
             stopSelf()

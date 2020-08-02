@@ -15,6 +15,7 @@ import java.lang.NumberFormatException
 import java.net.BindException
 import java.net.ServerSocket
 import java.net.Socket
+import java.net.SocketException
 
 private const val TAG = "Listener"
 class Listener : Service() {
@@ -39,9 +40,13 @@ class Listener : Service() {
     }
 
     fun listen(){
-        while(true) {
-            val socket: Socket = serverSocket.accept()
-            handleConnection(socket)
+        while(!serverSocket.isClosed) {
+            try {
+                val socket: Socket = serverSocket.accept()
+                handleConnection(socket)
+            }catch(e: SocketException){
+                Log.i(TAG, "Socket is closed")
+            }
         }
     }
     fun handleConnection(socket: Socket){
@@ -70,9 +75,6 @@ class Listener : Service() {
             }
             count++;
         }
-        Log.i(TAG, "title: $title")
-        Log.i(TAG, "text: $text")
-        Log.i(TAG, "priority $priority")
         displayNotification(title,text,priority)
         socketInput.close()
         socket.close()
